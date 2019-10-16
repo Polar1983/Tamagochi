@@ -9,36 +9,11 @@ class Tamagochi{
 
     tiempo(sc,energia){
         
+        varName()
         
-        var varCounter = 0;
-        let hambre = 100;
         
-        var varName = function(){
-            
-                 setInterval(function(){
-                    if(varCounter>24)
-                   {console.log('finish');varCounter=0;}
-                    if (varCounter === 5)
-                      {
-                   let usuario = prompt('si jugar juegas, si comer comer')
-                   switch (usuario){
-                     case 'jugar':
-                    
-                     this.ocio();
-
-                     break;
-                     case 'comer':
-                    
-                     this.come();
-
-                     break;
-                                }
-                        }
-                   console.log("Son las " ,varCounter, this.sc);varCounter++;sc-= Math.floor(hambre*0.07);
-                   energia-= Math.floor(hambre*0.07)}, 1000);
-            
-            
-        }
+        
+        
     }
 
     come(sc, energia){
@@ -181,7 +156,35 @@ get getSc(){return this.sc;}
     
     set setFelicidad(){}
     set setEnergia(){}
-    set setSc(){} */
+    */
+    get getSc(){return this.sc;} 
+}
+
+var varName = function(){
+    var varCounter = 0;
+    let hambre = 100;
+    setInterval(function(){
+       if( varCounter>24)
+      {console.log('finish');varCounter=0;}
+       if (varCounter === 5)
+         {
+      let usuario = prompt('si jugar juegas, si comer comer')
+      switch (usuario){
+        case 'jugar':
+       
+        this.ocio();
+
+        break;
+        case 'comer':
+       
+        this.come();
+
+        break;
+                   }
+           }
+      console.log("Son las " ,varCounter);varCounter++;}, 1000);
+
+
 }
 
 /*let select=1;
