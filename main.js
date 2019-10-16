@@ -161,6 +161,8 @@ get getSc(){return this.sc;}
 }
 
 var varName = function(){
+    let fun = new Tamagochi()
+    let hungry = new Tamagochi()
     var varCounter = 0;
     let hambre = 100;
     setInterval(function(){
@@ -172,12 +174,12 @@ var varName = function(){
       switch (usuario){
         case 'jugar':
        
-        this.ocio();
+       fun.ocio();
 
         break;
         case 'comer':
        
-        this.come();
+       hungry.come();
 
         break;
                    }
