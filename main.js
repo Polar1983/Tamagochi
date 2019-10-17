@@ -7,49 +7,38 @@ class Tamagochi{
       this.energia =energia;
     }
 
-    set setEnergia (level) {
-        this.energia += level;
-    }
-    
-    set setFelicidad (level) {
-        this.felicidad += level;
-    }
-    
-    get getSc () {
-        return this.sc;
-    } 
-    get getFelicidad () {
-        return this.felicidad;
-    }
-    
-    get getEnergia () {
-        return this.energia;
-    }
-
-    tiempo(sc,energia){
+    tiempo(tamagochi){
         
-        varName()
+        varName(tamagochi)
         
         
         
         
     }
 
-    come(sc, energia){
-
-        if(this.sc===100){console.log("el tamagochi ya no tiene hambre")}
+    come(sc,felicidad){
+        if(this.sc >= 100){document.write("el tamagochi ya no tiene hambre")}
   
-        else { let food = prompt("¿Qué quieres darle de comer, spaguettis o chuces?");
+        else { let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?");
        
-         if (food === "chuches"){ console.log("ha comido una chuche");this.sc+=15;this.energia += 10}
-         else if (food === "spaguettis"){ console.log("ha comido spaguettis");this.sc+=30;this.energia += 30}
-         else{console.log("ooooh que pena, no tenemos esa comida.")}
+         if (food === "chuches"){ document.write("ha comido una chuche");this.sc+=30;this.energia += 30;this.felicidad+=20}
+         else if (food === "spaguettis"){ this.sc+=30;this.energia += 30;document.write("ha comido spaguettis");}
+         else{document.write("ooooh que pena, no tenemos esa comida.")}
 
         }
-   
-         /*console.log("Nivel de hambre: " + this.sc)
-         console.log("Nivel de energia: " + this.energia)*/
+
+   return this.sc;
+         
    }
+
+   get getSc(){return this.sc;} 
+
+   get getFelicidad(){return this.felicidad;}
+   get getEnergia(){return this.energia;}
+
+   set restahambre(sc){ this.sc-= Math.floor(this.sc*0.07); }
+   set restaenergia(energia){ this.energia-= Math.floor(this.sc*0.07);  }
+   set restafelicidad(felicidad){ this.felicidad-= Math.floor(this.sc*0.07);  }
 
 
     
@@ -79,66 +68,39 @@ class Tamagochi{
     
 }
 
+
+    
 }
 
-var varName = function(){
-    let fun = new Tamagochi()
-    let hungry = new Tamagochi()
+
+
+var varName = function(tamagochi){
     var varCounter = 0;
     let hambre = 100;
     setInterval(function(){
+        document.body.innerHTML = ''
        if( varCounter>24)
       {console.log('finish');varCounter=0;}
-       if (varCounter === 5)
+       if (tamagochi.getSc < 40)
          {
-      let usuario = prompt('si jugar juegas, si comer comer')
-      switch (usuario){
-        case 'jugar':
+      
        
-       fun.ocio();
+       tamagochi.come();
 
-        break;
-        case 'comer':
-       
-       hungry.come();
-
-        break;
-                   }
+        
            }
-      console.log("Son las " ,varCounter);varCounter++;}, 1000);
+      document.write("<br/>Son las " ,varCounter)
+      document.write("<br/>Nivel de hambre: ", tamagochi.getSc)
+      document.write("<br/>Nivel de energia: ", tamagochi.getEnergia)
+      document.write("<br/>Nivel de felicidad: ", tamagochi.getFelicidad)
+      
+      
+      ;varCounter++;tamagochi.restahambre = tamagochi.getSc; tamagochi.restaenergia = tamagochi.getEnergia; tamagochi.restafelicidad = tamagochi.getFelicidad}, 1000);
 
 
 }
 
 
-/*let select=1;
-
-let hambre = new Tamagochi (100,30,40);
-var tam = new Tamagochi(20,30,20);
-let time = new Tamagochi(100,100,100)
-console.log("Nivel de hambre: " + this.sc)*/
-const time = new Tamagochi(100,100,100);
-time.tiempo(100,100);
-
-function winOrLoose () {
-    let rand = prompt('Introduce un numero entre el 1 y 10')
-    for(let i = 0; i < 10; i++){
-        if(i === rand){
-            let win = console.log('Win');
-            time.setFelicidad = 50;
-             time.setEnergia = 1;
-             console.log(`Tu Felicidad es de : ${time.getFelicidad} y tu Energia es de : ${time.energia}`);
-            return win;
-        } else {
-            let loose = console.log('Try again');
-            time.setFelicidad = -50;
-             time.setEnergia = -1;
-             console.log(`Tu Felicidad es de : ${time.getFelicidad} y tu Energia es de : ${time.energia}`);
-             return loose;
-        }
-    }
-    
-}
  
 function numbers (num1,num2,operator) {
     let input1 = parseInt(prompt('Introduce un numero : '));
