@@ -19,11 +19,14 @@ class Tamagochi{
     come(sc,felicidad){
         if(this.sc >= 100){document.write("el tamagochi ya no tiene hambre")}
   
-        else { let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?");
+        else { 
+            let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el menu dusponible es\n 1-spaguettis\n 2-chuches \n 3-grilos \n 0-no darle de comer prefiero jugar");
        
-         if (food === "chuches"){ document.write("ha comido una chuche");this.sc+=30;this.energia += 30;this.felicidad+=20}
-         else if (food === "spaguettis"){ this.sc+=30;this.energia += 30;document.write("ha comido spaguettis");}
-         else{document.write("ooooh que pena, no tenemos esa comida.")}
+         if (food === "1"){ alert("ha comido una chuche");this.sc+=15;this.energia += 7;this.felicidad+=20}
+         else if (food === "2"){ this.sc+=5;this.energia += 3;this.felicidad +=30 ; alert("ha comido spaguettis");}
+         else if (food === "3"){ this.sc+=2;this.energia += 30;this.felicidad += 5;alert("ha comido grillos");}
+         else if (food === "0"){ alert("no ha comido y vas a jugar");tamagochi.ocio();}
+         else{alert("ooooh que pena, no tenemos esa comida.")}
 
         }
 
@@ -39,128 +42,87 @@ class Tamagochi{
    set restahambre(sc){ this.sc-= Math.floor(this.sc*0.07); }
    set restaenergia(energia){ this.energia-= Math.floor(this.sc*0.07);  }
    set restafelicidad(felicidad){ this.felicidad-= Math.floor(this.sc*0.07);  }
+   set incr_ociofelicidad(felicidad){this.felicidad += 30}
 
 
     
     ocio(felicidad,energia){
-        /*let opc = '';
-    do {
-    console.log('1. winOrLoose');
-    console.log('2. numbers');
-    console.log('3. riddles');
-    //console.log('4. ');
-    switch(opc){
-        case '1' :
-            console.log('Jugar a winOrLoose');
-            break;
-        case '2' :
-            console.log('Jugar a numbers');
-            break;
-        case '3' :
-            console.log('Jugar a riddles');
-            break;
-        default :
-            console.log('Opcion erronea');
-            break;
-    }
-    opc = opc.toString(Math.floor((Math.random() * 3) +1)) ;
-    } while(opc != '1'); */
-    let winOrLoose = (random) => {
-        let rand = Math.floor(Math.random() * 11);
-        for(let i = 0; i < 10; i++){
-            if(i === rand){
-                this.felicidad += 50;
-                this.energia -= 1;
-                console.log('Win');
-            } else {
-                this.felicidad -= 50;
-                this.energia -= 1;
-                console.log('Try again');
-            }
-        }
-        return 
-    }
-     winOrLoose(); 
+        let opc = prompt("1. winOrLoose,2. numbers,3. riddles");
     
     
-     let input1 = Math.floor(Math.random() * 10);
-     let input2 = Math.floor(Math.random() * 10);
-     let op = ['+','-','/','*'];
-     let randomOp = Math.floor(Math.random() * op.length);
-     for(let i = 0; i < op.length; i++){
-         if(op[0] === op[randomOp]){
-             let operator = '+';
-         }else if (op[1] === op[randomOp]){
-            let operator = '-';
-         }else if (op[2] === op[randomOp]) {
-            let operator = '/';
-         }else if (op[3] === op[randomOp]){
-            let operator = '*';
-         }
-     }
-     var numbers = (num1,num2,operator) => {
+    if(opc ==='1'){}
+    else if(opc ==='2'){numbers()}
+    else if(opc ==='3'){}
         
-         switch(operator){
-             case '+':
-                 let sum = num1 + num2;
-                 return console.log(`Estas sumando ${num1} + ${num2}, y  es igual a ${sum}`);
-                 break;
-             case '-':
-                 let rest = num1 - num2;
-                 return console.log(`Estas restando ${num1} - ${num2}, y  es igual a ${rest}`);
-                 break;
-             case '/':
-                    let div = num1 / num2;
-                 if(num1 % num2 === 0){
-                     return console.log(`Estas dividiendo ${num1} / ${num2}, y  es igual a ${div}`);
-                 } else if (num1 === 0 || num2 === 0){
-                     return console.log('La division no se puede realizar');
-                 }
-                   
-             case '*' :
-                 let mult = num1 * num2;
-                 return console.log(`Estas multiplicando ${num1} * ${num2}, y  es igual a ${mult}`);
-                 break;
-             default :
-                return console.log('No has introducido un operador correcto : +,-,/,*,');
-      
-            }
-            this.felicidad += 50;
-            this.energia -= 1;
-     }
-     //numbers(input1,input2,operator);
-     //console.log(randomOp);
-    
-    
-    
-    
-    var riddles = (adiv,answ) => {
-        let riddle = [{guest :'Mi tía Cuca tiene una mala racha, ¿quién será esta muchacha?', answer: 'cucaracha'},{guest :'Canto en la orilla, vivo en el agua, no soy pescado, ni soy cigarra.', answer : 'rana'},{guest :'¿Qué animal tiene las cinco vocales?', answer : 'murcielago'},{guest :'Blanca por dentro, verde por fuera. Si quieres que te lo diga, espera.', answer: 'pera' }];
-        let randomRiddle = Math.floor(Math.random() * riddle.length);
-        for(let i = 0; i < riddle.length; i++){
-            if(riddle[i].answer === riddle[randomRiddle].answer){
-                console.log(`La solucion a la adivinanza ${riddle[i].guest} Es : ${riddle[i].answer}`);
-                console.log('You win 1 riddle');
-                this.felicidad += 50;
-                this.energia -= 1;
-            } else {
-                console.log('Try again another riddle answer');
-                this.felicidad -= 50;
-                this.energia -= 1;
-            }
         }
-    }
     
-    riddles(); 
+
+     
+  
+     
     
     
-}
+    
+    
+  
+    
+}   
+    
 
 
+
     
-}
 
 
+
+
+function numbers (tamagochi)  {
+
+
+    document.write("cuanto es 5 + 5?")
+    
+    tamagochi.getfelicidad = tamagochi.incr_ociofelicidad ;
+    return tamagochi.getfelicidad;
+    
+    
+    /* switch(operator){
+         case '+':
+             let sum = num1 + num2;
+             return document.write(`Estas sumando ${num1} + ${num2}, y  es igual a ${sum}`);
+             this.felicidad += 10;
+             this.energia -= 1;
+             break;
+
+         case '-':
+             let rest = num1 - num2;
+             return document.write(`Estas restando ${num1} - ${num2}, y  es igual a ${rest}`);
+             this.felicidad += 10;
+             this.energia -= 1;
+             break;
+
+         case '/':
+                let div = num1 / num2;
+             if(num1 % num2 === 0){
+                  document.write(`Estas dividiendo ${num1} / ${num2}, y  es igual a ${div}`);
+                  this.felicidad -= 10;
+                  this.energia -= 1;
+             } else if (num1 === 0 || num2 === 0){
+                  document.write('La division no se puede realizar');
+                  this.felicidad -= 10;
+                  this.energia -= 1;
+                  break;
+             }
+               
+         case '*' :
+             let mult = num1 * num2;
+             document.write(`Estas multiplicando ${num1} * ${num2}, y  es igual a ${mult}`);
+             break;*/
+         
+       
+ }
+ 
+
+ 
 
 var varName = function(tamagochi){
     var varCounter = 0;
@@ -174,6 +136,14 @@ var varName = function(tamagochi){
       
        
        tamagochi.come();
+
+        
+           }
+          else if (tamagochi.getFelicidad < 70)
+         {
+      
+       
+       tamagochi.ocio();
 
         
            }
