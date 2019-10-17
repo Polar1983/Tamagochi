@@ -7,30 +7,36 @@ class Tamagochi{
       this.energia =energia;
     }
 
-    tiempo(sc,energia){
+    tiempo(tamagochi){
         
-        varName()
+        varName(tamagochi)
         
         
         
         
     }
 
-    come(sc, energia){
-
-        if(this.sc===100){console.log("el tamagochi ya no tiene hambre")}
+    come(sc,felicidad){
+        if(this.sc >= 100){document.write("el tamagochi ya no tiene hambre")}
   
         else { let food = prompt("¿Qué quieres darle de comer, spaguettis o chuces?");
        
-         if (food === "chuches"){ console.log("ha comido una chuche");this.sc+=15;this.energia += 10}
-         else if (food === "spaguettis"){ console.log("ha comido spaguettis");this.sc+=30;this.energia += 30}
-         else{console.log("ooooh que pena, no tenemos esa comida.")}
+         if (food === "chuches"){ document.write("ha comido una chuche");this.sc+=30;}
+         else if (food === "spaguettis"){ document.write("ha comido spaguettis");this.sc+=30;this.energia += 30}
+         else{document.write("ooooh que pena, no tenemos esa comida.")}
 
         }
-   
-         /*console.log("Nivel de hambre: " + this.sc)
-         console.log("Nivel de energia: " + this.energia)*/
+
+        document.write(time.getSc)
+   return this.sc;
+         
    }
+
+   get getSc(){return this.sc;} 
+
+   get getFelicidad(){return this.felicidad;}
+   get getEnergia(){return this.energia;}
+
 
 
     
@@ -148,21 +154,11 @@ class Tamagochi{
     
 }
 
-get getSc(){return this.sc;} 
 
     
-    /*get getFelicidad(){}
-    get getEnergia(){}
-    
-    set setFelicidad(){}
-    set setEnergia(){}
-    */
-    get getSc(){return this.sc;} 
 }
 
-var varName = function(){
-    let fun = new Tamagochi()
-    let hungry = new Tamagochi()
+var varName = function(tamagochi){
     var varCounter = 0;
     let hambre = 100;
     setInterval(function(){
@@ -174,12 +170,12 @@ var varName = function(){
       switch (usuario){
         case 'jugar':
        
-       fun.ocio();
+       tamagochi.ocio();
 
         break;
         case 'comer':
        
-       hungry.come();
+       tamagochi.come(100,100);
 
         break;
                    }
@@ -196,10 +192,11 @@ var tam = new Tamagochi(20,30,20);
 let time = new Tamagochi(100,100,100)
 console.log("Nivel de hambre: " + this.sc)*/
 
-let time = new Tamagochi(100,100,100)
 
-time.tiempo(100,100)
 
+
+let tamagochi = new Tamagochi(100,100,100)
+tamagochi.tiempo(tamagochi)
 
 
 
