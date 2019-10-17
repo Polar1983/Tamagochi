@@ -1,6 +1,6 @@
-class Tamagochi{
+class Tamagochi {
 
-    constructor(sc, felicidad, energia)/* Inicializamos ya los valores aqui?*/{
+    constructor(sc, felicidad, energia){
   
       this.sc= sc;
       this.felicidad= felicidad;
@@ -9,10 +9,7 @@ class Tamagochi{
 
     tiempo(tamagochi){
         
-        varName(tamagochi)
-        
-        
-        
+    time(tamagochi) 
         
     }
 
@@ -20,11 +17,12 @@ class Tamagochi{
         if(this.sc >= 100){document.write("el tamagochi ya no tiene hambre")}
   
         else { 
-            let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el menu dusponible es\n 1-spaguettis\n 2-chuches \n 3-grilos \n 0-no darle de comer prefiero jugar");
+            let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el menu dusponible es\n 1-spaguettis\n 2-chuches \n 3-grilos \n 4-Judias verdes \n 0-no darle de comer prefiero jugar");
        
-         if (food === "1"){ alert("ha comido una chuche");this.sc+=15;this.energia += 7;this.felicidad+=20}
-         else if (food === "2"){ this.sc+=5;this.energia += 3;this.felicidad +=30 ; alert("ha comido spaguettis");}
+         if (food === "1"){ alert("ha comido un plato de spaguettis");this.sc+=15;this.energia += 7;this.felicidad+=20}
+         else if (food === "2"){ this.sc+=5;this.energia += 3;this.felicidad +=30 ; alert("ha comido chuches");}
          else if (food === "3"){ this.sc+=2;this.energia += 30;this.felicidad += 5;alert("ha comido grillos");}
+         else if (food === "4"){ this.sc+=18;this.energia += 40;this.felicidad -= 25;alert("ha comido judias verder");}
          else if (food === "0"){ alert("no ha comido y vas a jugar");tamagochi.ocio();}
          else{alert("ooooh que pena, no tenemos esa comida.")}
 
@@ -47,33 +45,79 @@ class Tamagochi{
 
     
     ocio(felicidad,energia){
-        let opc = prompt("1. winOrLoose,2. numbers,3. riddles");
-    
-    
-    if(opc ==='1'){}
-    else if(opc ==='2'){numbers()}
-    else if(opc ==='3'){}
-        
+        let opc = prompt('1. winOrLoose'+ '\n'+'2. numbers'+ '\n'+'3. riddles');
+        switch (opc) {
+        case '1' :
+            this.winOrLoose();
+            break;
+        case '2' :
+            this.numbers();
+            break;
+        case '3' :
+            this.riddles();
+            break;
         }
+
+    }  // Fin metodo ocio
+
+    winOrLoose (energia,felicidad) {
+        let rand = prompt('Adivina el numero escondido entre el 1 y 10')
+        for(let i = 0; i < 1; i++){
+            if(i === rand){
+                this.felicidad += 30;
+                this.energia += 1;
+                alert('win');
+            } else {
+                 this.felicidad += -50;
+                 this.energia += -1;
+                 alert('loose');
+            }
+        }
+    }
+
+
+     numbers (energia,felicidad) {
+        let input1 = Math.floor(Math.random() * 10);
+        let input2 = Math.floor(Math.random() * 10);
+        let sum = input1 + input2;
+        let answer = parseInt(prompt(`Cuanto es ${input1} + ${input2} `));
+         if (answer === sum){
+            this.felicidad += 30;
+            this.energia += 1;
+             alert('win');
+         } else {
+            this.felicidad -= 30;
+            this.energia -= 1;
+             alert('loose');
+        }
+      
+    }
+
+    riddles (adiv,answ) {  
+        let riddle = [{guest :'Mi tía Cuca tiene una mala racha, ¿quién será esta muchacha?', answer: 'cucaracha'},{guest :'Canto en la orilla, vivo en el agua, no soy pescado, ni soy cigarra.', answer : 'rana'},{guest :'¿Qué animal tiene las cinco vocales?', answer : 'murcielago'},{guest :'Blanca por dentro, verde por fuera. Si quieres que te lo diga, espera.', answer: 'pera' }];
+        let randomRiddle = Math.floor(Math.random() * riddle.length);
+        for(let i = 0; i < riddle.length; i++){
+            let rid = alert(riddle[i].guest);
+            let ans = prompt('Introduce tu respuesta : ');
+            if(riddle[i].answer === ans){
+                document.write(`La solucion a la adivinanza ${riddle[i].guest} Es : ${riddle[i].answer}`);
+                document.write('You win 1 riddle');
+                this.felicidad += 50;
+                this.energia += 1;
+                
+            } else {
+                document.write('Try again another riddle answer');
+                this.felicidad += -50;
+                this.energia += -1;
+            }
+        }
+    }    
+
+
     
 
-     
-  
-     
     
-    
-    
-    
-  
-    
-}   
-    
-
-
-
-    
-
-
+}
 
 
 function numbers (tamagochi)  {
@@ -85,38 +129,7 @@ function numbers (tamagochi)  {
     return tamagochi.getfelicidad;
     
     
-    /* switch(operator){
-         case '+':
-             let sum = num1 + num2;
-             return document.write(`Estas sumando ${num1} + ${num2}, y  es igual a ${sum}`);
-             this.felicidad += 10;
-             this.energia -= 1;
-             break;
-
-         case '-':
-             let rest = num1 - num2;
-             return document.write(`Estas restando ${num1} - ${num2}, y  es igual a ${rest}`);
-             this.felicidad += 10;
-             this.energia -= 1;
-             break;
-
-         case '/':
-                let div = num1 / num2;
-             if(num1 % num2 === 0){
-                  document.write(`Estas dividiendo ${num1} / ${num2}, y  es igual a ${div}`);
-                  this.felicidad -= 10;
-                  this.energia -= 1;
-             } else if (num1 === 0 || num2 === 0){
-                  document.write('La division no se puede realizar');
-                  this.felicidad -= 10;
-                  this.energia -= 1;
-                  break;
-             }
-               
-         case '*' :
-             let mult = num1 * num2;
-             document.write(`Estas multiplicando ${num1} * ${num2}, y  es igual a ${mult}`);
-             break;*/
+    
          
        
  }
@@ -124,124 +137,36 @@ function numbers (tamagochi)  {
 
  
 
-var varName = function(tamagochi){
+var time = function(tamagochi){
     var varCounter = 0;
     let hambre = 100;
     setInterval(function(){
-        document.body.innerHTML = ''
+        document.body.innerHTML = '';
        if( varCounter>24)
       {console.log('finish');varCounter=0;}
-       if (tamagochi.getSc < 40)
-         {
-      
-       
+       if (tamagochi.getSc === 20 || varCounter === 14 || varCounter === 20)
+        {
        tamagochi.come();
-
-        
            }
-          else if (tamagochi.getFelicidad < 70)
-         {
-      
-       
-       tamagochi.ocio();
-
-        
-           }
+        else if (tamagochi.getFelicidad === 40){
+            tamagochi.ocio();
+        }
+        else if (tamagochi.getFelicidad <= 0){
+            alert("El tamagochi ha muerto de tristeza")
+            window.location.href = "https://www.youtube.com/watch?v=2bosouX_d8Y";
+        }
       document.write("<br/>Son las " ,varCounter)
       document.write("<br/>Nivel de hambre: ", tamagochi.getSc)
       document.write("<br/>Nivel de energia: ", tamagochi.getEnergia)
       document.write("<br/>Nivel de felicidad: ", tamagochi.getFelicidad)
       
       
-      ;varCounter++;tamagochi.restahambre = tamagochi.getSc; tamagochi.restaenergia = tamagochi.getEnergia; tamagochi.restafelicidad = tamagochi.getFelicidad}, 1000);
-
-
-}
-
-
-/*let select=1;
-
-let hambre = new Tamagochi (100,30,40);
-var tam = new Tamagochi(20,30,20);
-let time = new Tamagochi(100,100,100)
-console.log("Nivel de hambre: " + this.sc)*/
-
-
-let tamagochi = new Tamagochi(100,100,100)
-tamagochi.tiempo(tamagochi)
+      ;varCounter++;tamagochi.restahambre = tamagochi.getSc; tamagochi.restaenergia = tamagochi.getEnergia; tamagochi.restafelicidad = tamagochi.getFelicidad
+    }, 1000);}
 
 
 
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
+let tamagochi = new Tamagochi(100,100,100);
+tamagochi.tiempo(tamagochi);
 
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
