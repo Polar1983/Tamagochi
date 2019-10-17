@@ -100,15 +100,15 @@ class Tamagochi {
             let rid = alert(riddle[i].guest);
             let ans = prompt('Introduce tu respuesta : ');
             if(riddle[i].answer === ans){
-                document.write(`La solucion a la adivinanza ${riddle[i].guest} Es : ${riddle[i].answer}`);
-                document.write('You win 1 riddle');
                 this.felicidad += 50;
                 this.energia += 1;
+                alert(`La solucion a la adivinanza ${riddle[i].guest} Es : ${riddle[i].answer}`);
+                alert('Has ganado 1 adivinanza');
                 
             } else {
-                document.write('Try again another riddle answer');
                 this.felicidad += -50;
                 this.energia += -1;
+                alert('Has fallado, prueba otra adivinanza');  
             }
         }
     }    
