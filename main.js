@@ -178,7 +178,7 @@ var time = function(tamagochi){
             //varCounter = 0;
            
             document.getElementById("sonic").src="muerto.gif"
-            alert ('sonic ha muerto !!');cont++;
+            cont++;
             stop();
 
             
@@ -191,7 +191,7 @@ var time = function(tamagochi){
       tableFelicidad.innerHTML = tamagochi.getFelicidad;
       
       ;varCounter++;tamagochi.restahambre = tamagochi.getSc; tamagochi.restaenergia = tamagochi.getEnergia; tamagochi.restafelicidad = tamagochi.getFelicidad
-    }, 1100);}
+    }, 1200);}
 function botoncome(){
     contadorcomida++;
     tamagochi.come();
