@@ -93,7 +93,7 @@ let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el men
     }
 
     riddles (adiv,answ) {  
-        let riddle = [{guest :'Mi tía Cuca tiene una mala racha, ¿quién será esta muchacha?', answer: 'cucaracha'},{guest :'Canto en la orilla, vivo en el agua, no soy pescado, ni soy cigarra.', answer : 'rana'},{guest :'¿Qué animal tiene las cinco vocales?', answer : 'murcielago'},{guest :'Blanca por dentro, verde por fuera. Si quieres que te lo diga, espera.', answer: 'pera' }];
+        let riddle = [{guest :'Cuantos animales caben en una ballena?', answer: 'ninguno'},{guest :'Cual fue el ultimo animal creado por Dios?', answer : 'el delfin'},{guest :'Un nino y un pato nacieron el mismo dia.¿Al cabo de un ano cual de los dos es mayor?', answer : 'el pato'},{guest :'Donde guarda un superheroe su disfraz', answer: 'ensuperchera' }];
         let randomRiddle = Math.floor(Math.random() * riddle.length);
         for(let i = 0; i < riddle.length; i++){
             let rid = alert(riddle[i].guest);
@@ -111,7 +111,10 @@ let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el men
             }
         }
     }    
-
+// answer1 : ninguna (porque esta llena)
+// answer2 : el delfin
+// answer3 : el pato (porque tiene un ano y pico)
+// answer4 : ensuoerchera
 
     
 
