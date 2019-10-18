@@ -19,7 +19,7 @@ class Tamagochi {
        
 let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el menu dusponible es\n 1-spaguettis\n 2-chuches \n 3-grilos \n 4-Judias verdes \n 0-no darle de comer prefiero jugar")
 
-         if (food === "1"){ this.sc+=15;this.energia += 7;this.felicidad+=20; alert("ha comido spaguettis");}
+         if (food === "1"){ this.sc+=15;this.energia += 7;this.felicidad+=6; alert("ha comido spaguettis");}
          else if (food === "2"){ this.sc+=5;this.energia += 3;this.felicidad +=30 ; alert("ha comido chuches");}
          else if (food === "3"){ this.sc+=2;this.energia += 30;this.felicidad += 5;alert("ha comido grillos");}
          else if (food === "4"){ this.felicidad -= 55;alert("ha comido judias verdes");}
@@ -36,9 +36,9 @@ let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el men
    get getFelicidad(){return this.felicidad;}
    get getEnergia(){return this.energia;}
 
-   set restahambre(sc){ this.sc-= Math.floor(this.sc*0.07); }
-   set restaenergia(energia){ this.energia-= Math.floor(this.sc*0.07);  }
-   set restafelicidad(felicidad){ this.felicidad-= Math.floor(this.sc*0.07);  }
+   set restahambre(sc){ this.sc-= 6; }
+   set restaenergia(energia){ this.energia-= 3;  }
+   set restafelicidad(felicidad){ this.felicidad-= 5;  }
    set incr_ociofelicidad(felicidad){this.felicidad += 30}
 
 
@@ -93,7 +93,7 @@ let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el men
     }
 
     riddles (adiv,answ) {  
-        let riddle = [{guest :'Cuantos animales caben en una ballena?', answer: 'ninguno'},{guest :'Cual fue el ultimo animal creado por Dios?', answer : 'el delfin'},{guest :'Un nino y un pato nacieron el mismo dia.¿Al cabo de un ano cual de los dos es mayor?', answer : 'el pato'},{guest :'Donde guarda un superheroe su disfraz', answer: 'ensuperchera' }];
+        let riddle = [{guest :'¿Cuantos animales caben en una ballena?', answer: 'ninguno'},{guest :'¿Cual fue el último animal creado por Dios?', answer : 'delfin'},{guest :'Un niño y un pato nacieron el mismo día. ¿Al cabo de un año cual de los dos es mayor?', answer : 'pato'},{guest :'¿Donde guarda un superheroe su disfraz?', answer: 'superchera' }];
         let randomRiddle = Math.floor(Math.random() * riddle.length);
         for(let i = 0; i < riddle.length; i++){
             let rid = alert(riddle[i].guest);
@@ -101,7 +101,7 @@ let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el men
             if(riddle[i].answer === ans){
                 this.felicidad += 50;
                 this.energia += 1;
-                alert(`La solucion a la adivinanza ${riddle[i].guest} Es : ${riddle[i].answer}`);
+                alert(`La solución a la adivinanza ${riddle[i].guest} Es : ${riddle[i].answer}`);
                 alert('Has ganado 1 adivinanza');
                 
             } else {
@@ -112,9 +112,9 @@ let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el men
         }
     }    
 // answer1 : ninguna (porque esta llena)
-// answer2 : el delfin
-// answer3 : el pato (porque tiene un ano y pico)
-// answer4 : ensuoerchera
+// answer2 : delfin
+// answer3 : pato (porque tiene un año y pico)
+// answer4 : superchera
 
     
 
@@ -174,16 +174,22 @@ var time = function(tamagochi){
         }*/
        
        
-       if (tamagochi.getFelicidad <= 0 && cont === 0 ){ 
+       if (tamagochi.getFelicidad <= 0 && cont === 0){
             //varCounter = 0;
            
             document.getElementById("sonic").src="muerto.gif"
             cont++;
-            stop();
+            
 
             
           
         }
+
+       else if(tamagochi.getSc<=0 && cont === 0){ document.getElementById("sonic").src="muerto.gif"
+       cont++;}
+
+        else if (tamagochi.getEnergia<=0 && cont === 0){ document.getElementById("sonic").src="muerto.gif"
+        cont++;}
       
       tableHora.innerHTML = varCounter;
       tableHambre.innerHTML = tamagochi.getSc;
