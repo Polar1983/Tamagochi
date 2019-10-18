@@ -1,0 +1,68 @@
+/*Estilo de la CSS de la WEB*/
+
+body{
+background-color: grey;
+font-family: Arial;
+}
+#tabla{
+    margin: 100px auto;
+    width: 550px;
+}
+
+#sonic{
+    margin: 10px auto;
+    width: 300px auto;
+}
+
+#hora{
+    font-size: 25px;
+}
+#hambre{
+    font-size: 22px;
+}
+#felicidad{
+    font-size: 22px;
+}
+#energia{
+    font-size: 22px;
+}
+table{
+    background-color: white;
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+    border: 3px solid black;
+}
+
+th{
+    padding: 10px;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+td{
+    padding: 10px;
+    margin-top: 20px;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+thead{
+background-color: #285fd4;
+color: white;
+border: 3px solid black;
+}
+
+tr:nth-child(event){
+    background-color: #ddd;
+}
+
+
+center{
+    margin-top: -100px;
+}
+
+
+

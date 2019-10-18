@@ -22,7 +22,7 @@ class Tamagochi {
          if (food === "1"){ alert("ha comido un plato de spaguettis");this.sc+=15;this.energia += 7;this.felicidad+=20}
          else if (food === "2"){ this.sc+=5;this.energia += 3;this.felicidad +=30 ; alert("ha comido chuches");}
          else if (food === "3"){ this.sc+=2;this.energia += 30;this.felicidad += 5;alert("ha comido grillos");}
-         else if (food === "4"){ this.sc+=18;this.energia += 40;this.felicidad -= 25;alert("ha comido judias verder");}
+         else if (food === "4"){ this.sc+=18;this.energia += 40;this.felicidad -= 55;alert("ha comido judias verder");}
          else if (food === "0"){ alert("no ha comido y vas a jugar");tamagochi.ocio();}
          else{alert("ooooh que pena, no tenemos esa comida.")}
 
@@ -140,10 +140,19 @@ function numbers (tamagochi)  {
 var time = function(tamagochi){
     var varCounter = 0;
     let hambre = 100;
+    let tableHora =  document.getElementById('hora');
+    let tableHambre =  document.getElementById('hambre');
+    let tableEnergia =  document.getElementById('energia');
+    let tableFelicidad =  document.getElementById('felicidad');
+    let cont = 0;
     setInterval(function(){
-        document.body.innerHTML = '';
        if( varCounter>24)
-      {console.log('finish');varCounter=0;}
+      {varCounter=0;}
+
+    if( tamagochi.getFelicidad>0){  document.getElementById("sonic").src="sonic.gif"}
+    
+
+
        if (tamagochi.getSc === 20 || varCounter === 14 || varCounter === 20)
         {
        tamagochi.come();
@@ -151,15 +160,17 @@ var time = function(tamagochi){
         else if (tamagochi.getFelicidad === 40){
             tamagochi.ocio();
         }
-        else if (tamagochi.getFelicidad <= 0){
+        else if (tamagochi.getFelicidad <= 0 && cont===0){           
+             cont++;
             alert("El tamagochi ha muerto de tristeza")
-            window.location.href = "https://www.youtube.com/watch?v=2bosouX_d8Y";
+            document.getElementById("muerto").src="muerto.gif"
+          
         }
-      document.write("<br/>Son las " ,varCounter)
-      document.write("<br/>Nivel de hambre: ", tamagochi.getSc)
-      document.write("<br/>Nivel de energia: ", tamagochi.getEnergia)
-      document.write("<br/>Nivel de felicidad: ", tamagochi.getFelicidad)
       
+      tableHora.innerHTML = varCounter;
+      tableHambre.innerHTML = tamagochi.getSc;
+      tableEnergia.innerHTML = tamagochi.getEnergia;
+      tableFelicidad.innerHTML = tamagochi.getFelicidad;
       
       ;varCounter++;tamagochi.restahambre = tamagochi.getSc; tamagochi.restaenergia = tamagochi.getEnergia; tamagochi.restafelicidad = tamagochi.getFelicidad
     }, 1000);}
