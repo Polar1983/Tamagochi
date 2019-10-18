@@ -5,13 +5,14 @@ background-color: grey;
 font-family: Arial;
 }
 #tabla{
-    margin: 100px auto;
+    margin: 20px auto;
     width: 550px;
 }
 
 #sonic{
     margin: 10px auto;
-    width: 300px auto;
+    width: 400px;
+    height: 400px;
 }
 
 #hora{
@@ -59,6 +60,37 @@ tr:nth-child(event){
     background-color: #ddd;
 }
 
+
+#botones{text-align: center;}
+
+#boton{
+    font: bold 15px Arial;
+    text-decoration: none;
+    color: white;
+    background-color: #3428d3;
+    border: 2px solid black;
+    padding: 10px 20px 10px 20px;
+    border-radius: 7px;
+    }
+    
+    
+    #boton:hover{
+        background:  #17116d;
+    }
+    #comer{
+        font: bold 15px Arial;
+        text-decoration: none;
+        color: white;
+        background-color: #d32836;
+        border: 2px solid black;
+        padding: 10px 20px 10px 20px;
+        border-radius: 7px;
+        }
+        
+        
+        #comer:hover{
+            background:  #17116d;
+        }
 
 center{
     margin-top: -100px;

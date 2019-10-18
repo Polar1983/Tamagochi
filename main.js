@@ -14,20 +14,19 @@ class Tamagochi {
     }
 
     come(sc,felicidad){
-        if(this.sc >= 100){document.write("el tamagochi ya no tiene hambre")}
+        
   
-        else { 
-            let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el menu dusponible es\n 1-spaguettis\n 2-chuches \n 3-grilos \n 4-Judias verdes \n 0-no darle de comer prefiero jugar");
        
-         if (food === "1"){ alert("ha comido un plato de spaguettis");this.sc+=15;this.energia += 7;this.felicidad+=20}
+let food = prompt("¿Qué quieres darle de comer, spaguettis o chuches?\n el menu dusponible es\n 1-spaguettis\n 2-chuches \n 3-grilos \n 4-Judias verdes \n 0-no darle de comer prefiero jugar")
+
+         if (food === "1"){ this.sc+=15;this.energia += 7;this.felicidad+=20; alert("ha comido spaguettis");}
          else if (food === "2"){ this.sc+=5;this.energia += 3;this.felicidad +=30 ; alert("ha comido chuches");}
          else if (food === "3"){ this.sc+=2;this.energia += 30;this.felicidad += 5;alert("ha comido grillos");}
-         else if (food === "4"){ this.sc+=18;this.energia += 40;this.felicidad -= 55;alert("ha comido judias verder");}
+         else if (food === "4"){ this.felicidad -= 55;alert("ha comido judias verdes");}
          else if (food === "0"){ alert("no ha comido y vas a jugar");tamagochi.ocio();}
          else{alert("ooooh que pena, no tenemos esa comida.")}
 
-        }
-
+       
    return this.sc;
          
    }
@@ -139,31 +138,47 @@ function numbers (tamagochi)  {
 
 var time = function(tamagochi){
     var varCounter = 0;
-    let hambre = 100;
     let tableHora =  document.getElementById('hora');
     let tableHambre =  document.getElementById('hambre');
     let tableEnergia =  document.getElementById('energia');
     let tableFelicidad =  document.getElementById('felicidad');
-    let cont = 0;
+ 
+
     setInterval(function(){
        if( varCounter>24)
       {varCounter=0;}
-
-    if( tamagochi.getFelicidad>0){  document.getElementById("sonic").src="sonic.gif"}
+    if( varCounter < 8){  document.getElementById("sonic").src="dormir.gif"}
+    if( varCounter > 8) {document.getElementById("sonic").src="sonic.gif"}
+    if(tamagochi.getFelicidad <= 0){  document.getElementById("sonic").src="muerto.gif"}
+    if(contadorcomida != 0){  document.getElementById("sonic").src="comiendo.gif";contadorcomida=0;}
+    if(contadorjuego != 0) {  document.getElementById("sonic").src="jugar.gif";
+        var n = 0;
+        window.setInterval(function(){if (n>3){
+        contadorjuego=0;}
+         n++;
+            },1000);
+        }
+   
     
 
 
-       if (tamagochi.getSc === 20 || varCounter === 14 || varCounter === 20)
+      /* if (tamagochi.getSc === 20 || varCounter === 14 || varCounter === 20)
         {
        tamagochi.come();
            }
         else if (tamagochi.getFelicidad === 40){
             tamagochi.ocio();
-        }
-        else if (tamagochi.getFelicidad <= 0 && cont===0){           
-             cont++;
-            alert("El tamagochi ha muerto de tristeza")
-            document.getElementById("muerto").src="muerto.gif"
+        }*/
+       
+       
+       if (tamagochi.getFelicidad <= 0 && cont === 0 ){ 
+            //varCounter = 0;
+           
+            document.getElementById("sonic").src="muerto.gif"
+            alert ('sonic ha muerto !!');cont++;
+            stop();
+
+            
           
         }
       
@@ -173,10 +188,22 @@ var time = function(tamagochi){
       tableFelicidad.innerHTML = tamagochi.getFelicidad;
       
       ;varCounter++;tamagochi.restahambre = tamagochi.getSc; tamagochi.restaenergia = tamagochi.getEnergia; tamagochi.restafelicidad = tamagochi.getFelicidad
-    }, 1000);}
+    }, 1100);}
+function botoncome(){
+    contadorcomida++;
+    tamagochi.come();
+}
 
+function botonjuega(){
+    contadorjuego++;
+    tamagochi.ocio()
+}
 
+function stop(){clearInterval(time)}
 
+let cont = 0;
+let contadorcomida=0;
+let contadorjuego=0;
 let tamagochi = new Tamagochi(100,100,100);
 tamagochi.tiempo(tamagochi);
 
